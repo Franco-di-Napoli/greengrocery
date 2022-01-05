@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  servlet.context-path: /api
+
+spring:
+  profiles.active: dev
+  application.name: greengrocery
+  jpa:
+    # properties.hibernate.jdbc.lob.non_contextual_creation: true
+    defer-datasource-initialization: true
+app:
+  version: "1.0.0"
+springfox.documentation.enabled: false
+---
+#DEV CONFIGURATION
+spring:
+  config.activate.on-profile: dev
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver: org.h2.Driver
+    username: sa
+  # for springfox
+  mvc.pathmatch.matching-strategy: ant-path-matcher
+  h2.console.enabled: true
+springfox.documentation.enabled: true
+---
+#QAT CONFIGURATION
+spring:
+  config.activate.on-profile: qat
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver: org.h2.Driver
+    username: sa
