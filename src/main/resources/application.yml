@@ -11,6 +11,8 @@ spring:
 app:
   version: "1.0.0"
 springfox.documentation.enabled: false
+spring.jackson.time-zone: America/Argentina/Buenos_Aires
+spring.jackson.locale: es-AR
 ---
 #DEV CONFIGURATION
 spring:
